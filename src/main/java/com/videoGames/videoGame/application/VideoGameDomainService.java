@@ -1,4 +1,4 @@
-package com.videoGames.videoGame.domain.service;
+package com.videoGames.videoGame.application;
 
 import com.videoGames.videoGame.domain.modelo.VideoGame;
 

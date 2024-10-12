@@ -11,5 +11,5 @@ public interface VideoGameRepository {
     Boolean getVideoGameByID(Integer id);
 
 
-    List<VideoGame> getVideoGames();
+    List<Object> getVideoGames();
 }

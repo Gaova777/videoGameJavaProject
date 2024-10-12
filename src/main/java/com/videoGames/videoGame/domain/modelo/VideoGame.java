@@ -16,16 +16,17 @@ import java.time.LocalDateTime;
     private int id;
     private String slug;
     private String name;
-    private LocalDateTime released;
+    private String released;
     private double rating;
+    private String background_image;
 
-
-    public VideoGame(int id, String slug, String name, LocalDateTime released, double rating) {
+    public VideoGame(int id, String slug, String name, String released, double rating,String background_image) {
         this.id = id;
         this.slug = slug;
         this.name = name;
         this.released = released;
         this.rating = rating;
+        this.background_image=background_image;
     }
 
 

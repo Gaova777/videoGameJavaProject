@@ -7,33 +7,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-
 @RequiredArgsConstructor
 @Service
 public class RawImpl {
-    private final RestTemplate client;
-    private final ObjectMapper mapper;
 
-    public Object getRoutes(String token){
+    private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;  // Inyectado automáticamente por Spring Boot
+
+    public String getRoutes(String token) {
         try {
-           RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
-            ResponseEntity<Object> response = restTemplate.exchange(
+            HttpEntity<String> requestEntity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(
                     "https://api.rawg.io/api/games?key=" + token,
                     HttpMethod.GET,
                     requestEntity,
-                    Object.class);
-            if (response.getStatusCode() == HttpStatus.OK) {
-                return response.getBody();
-            } else {
-                return response.getStatusCodeValue();
-            }
-
-
+                    String.class);
+            return response.getBody();
         } catch (RestClientException e) {
-            return e.getMessage();
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.videoGames.videoGame.infrastucture.persistencia.entidad;
 
 import com.videoGames.videoGame.domain.modelo.VideoGame;
+import com.videoGames.videoGame.infrastucture.modelo.VideoGameController;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ public class videoGameEntity {
     private Integer id;
     private String slug;
     private String name;
-    private LocalDateTime released;
+    private String released;
     private double rating;
 
 
@@ -28,5 +29,9 @@ public class videoGameEntity {
         videoGameEntity.setReleased(videoGame.getReleased());
         videoGameEntity.setRating(videoGame.getRating());
         return videoGameEntity;
+    }
+
+    public Object videoGameModeloToVideoGameController() {
+        return new VideoGameController(id, slug, name, released, rating);
     }
 }

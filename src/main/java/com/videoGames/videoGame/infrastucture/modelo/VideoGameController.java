@@ -14,10 +14,10 @@ public class VideoGameController {
     private int id;
     private String slug;
     private String name;
-    private LocalDateTime released;
+    private String released;
     private double rating;
 
-    public VideoGameController(int id, String slug, String name, LocalDateTime released, double rating) {
+    public VideoGameController(int id, String slug, String name, String released, double rating) {
         this.id = id;
         this.slug = slug;
         this.name = name;
